@@ -13,9 +13,7 @@
 
         require 'common.inc.php';
 
-        require ROOT_PATH . 'MbdPayClient.php';
-
-        $client = new pagepan\MbdPayClient(MBDPAY_APP_ID, MBDPAY_APP_KEY);
+        $client = new Pagepan\MbdPayClient(MBDPAY_APP_ID, MBDPAY_APP_KEY);
 
         $openid = $_GET['openid'];
 

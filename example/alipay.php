@@ -12,10 +12,8 @@
         <?php
 
         require 'common.inc.php';
-
-        require ROOT_PATH . 'MbdPayClient.php';
-
-        $client = new pagepan\MbdPayClient(MBDPAY_APP_ID, MBDPAY_APP_KEY);
+        
+        $client = new Pagepan\MbdPayClient(MBDPAY_APP_ID, MBDPAY_APP_KEY);
         
         echo $client->alipay('http://192.168.31.2/mbdpay-php/callback_url.php', 1, '产品说明', );
 

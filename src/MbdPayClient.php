@@ -1,6 +1,6 @@
 <?php
 
-namespace pagepan;
+namespace Pagepan;
 
 
 use GuzzleHttp\Client;

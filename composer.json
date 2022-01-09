@@ -15,5 +15,10 @@
     "require": {
         "php": ">=7.2.5",
         "guzzlehttp/guzzle": "^7.4"
+    }, 
+    "autoload": {
+        "psr-4": {
+            "Pagepan\\": "src/"   
+        }  
     }
 }
