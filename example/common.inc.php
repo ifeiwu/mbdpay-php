@@ -9,8 +9,8 @@ ini_set('log_errors', true);
 ini_set('error_log', ROOT_PATH . 'error.log');
 
 // https://mbd.pub/dev 进入【控制面板->开发设置】获取APP参数
-define('MBDPAY_APP_ID', '219425492613125');
-define('MBDPAY_APP_KEY', '9db8e42d34e0858ca1572797846677c7');
+define('MBDPAY_APP_ID', 'xxxxxxxxxxx');
+define('MBDPAY_APP_KEY', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 
 require_once ROOT_PATH . 'vendor/autoload.php';
 
