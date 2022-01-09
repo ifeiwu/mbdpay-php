@@ -1,0 +1,19 @@
+{
+    "name": "ifeiwu/mbdpay-php",
+    "description": "MbdPay PHP SDK",
+    "type": "library",
+    "homepage": "https://github.com/ifeiwu/mbdpay-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "pagepan",
+            "email": "pagepan@qq.com",
+            "homepage": "https://www.pagepan.com/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5",
+        "guzzlehttp/guzzle": "^7.4"
+    }
+}
