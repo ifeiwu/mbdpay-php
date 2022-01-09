@@ -13,5 +13,3 @@ define('MBDPAY_APP_ID', 'xxxxxxxxxxx');
 define('MBDPAY_APP_KEY', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 
 require_once ROOT_PATH . 'vendor/autoload.php';
-
-require_once ROOT_PATH . 'src/MbdPayClient.php';
