@@ -1,5 +1,6 @@
 <html>
     <head>
+        <title>微信 JSAPI 支付</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -25,50 +26,20 @@
         }
         else
         {
-            $res = $client->wxjs($openid, 1, '产品说明', 'http://192.168.31.2/mbdpay-php/callback_url.php');
-        ?>
-        
-        <script>
-            function onBridgeReady()
-            {
-               WeixinJSBridge.invoke(
-                  'getBrandWCPayRequest', {
-                     "appId":"<?php echo $res['appId']; ?>", // 公众号ID，由商户传入     
-                     "timeStamp":"<?php echo $res['timeStamp']; ?>", // 时间戳，自1970年以来的秒数     
-                     "nonceStr":"<?php echo $res['nonceStr']; ?>", // 随机串     
-                     "package":"<?php echo $res['package']; ?>",     
-                     "signType":"<?php echo $res['signType']; ?>", // 微信签名方式：     
-                     "paySign":"<?php echo $res['paySign']; ?>" // 微信签名 
-                  },
-                  function (res) {
-                      
-                      if ( res.err_msg == "get_brand_wcpay_request:ok" )
-                      {
-                        // 使用以上方式判断前端返回,微信团队郑重提示：
-                        // res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-                      } 
-               }); 
-            }
+            $res = $client->wxjs($openid, 1, '产品说明', 'http://192.168.31.2/mbdpay-php/example/callback_url.php');
             
-            if ( typeof WeixinJSBridge == "undefined" )
+            if ( $res['code'] === 0 )
             {
-               if ( document.addEventListener )
-               {
-                   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-               }
-               else if (document.attachEvent)
-               {
-                   document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
-                   document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-               }
+                $data = $res['data'];
+                
+                include 'wxjs-script.php';
             }
             else
             {
-               onBridgeReady();
+                echo $res['message'];
             }
-        </script>
-
-        <?php } ?>
+        }
+        ?>
         
     </body>
 </html>

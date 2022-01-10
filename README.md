@@ -1,13 +1,17 @@
 # 面包多支付
 
-目前还在开发阶段...
+[面包多支付](https://mbd.pub/)（PHP SDK）是为个人而打造，安全，正规，低门槛的支付能力服务。
 
-## 安装
+## 申请流程
+
+##### [注册面包多](https://mianbaoduo.com/) -> [开通闪电结算](https://mianbaoduo.com/o/config/transaction/profile) -> [获取开发参数](https://mbd.pub/dev)
+
+## 快速安装
 ```
 composer require ifeiwu/mbdpay-php
 ```
 
-## 使用
+## 开始使用
 
 ```php
 require_once 'vendor/autoload.php';
@@ -15,7 +19,8 @@ require_once 'vendor/autoload.php';
 $client = new Pagepan\MbdPayClient(MBDPAY_APP_ID, MBDPAY_APP_KEY);
 ```
 
-### 微信 JS 网页支付
+### 获取用户 openid
+###### 微信 JSAPI 支付必须
 ```php
 // 完整的例子：example/wxjs.php
 
@@ -25,21 +30,48 @@ if ( ! $openid )
 {
     $openid_url = $client->openid('http://192.168.31.2/mbdpay-php/example/wxjs.php');
 
-    echo '<p>正在打开微信支付窗口...</p><script>location.href="' . $openid_url. '";</script>';
+    echo '<script>location.href="' . $openid_url. '";</script>';
 }
 else
 {
-    $res = $client->wxjs($openid, 1, '产品说明', 'http://192.168.31.2/mbdpay-php/callback_url.php');
-    
     // ......
 }
 ```
 
-### 支付宝 网页支付
+### 微信 JSAPI
+###### 适用于微信内网页或扫码支付
+```php
+// 完整的例子：example/wxjs.php
+
+$res = $client->wxjs($openid, 1, '产品说明', 'http://192.168.31.2/mbdpay-php/callback_url.php');
+```
+
+### 微信 H5
+###### 适用于外部移动端浏览器或扫码支付
+```php
+// 完整的例子：example/wxh5.php
+ 
+$res = $client->wxh5(1, '产品说明');
+```
+
+### 支付宝
+###### 适用于移动端网页或扫码支付
 ```php
 // 完整的例子：example/alipay.php
-
-$client = new Pagepan\MbdPayClient(MBDPAY_APP_ID, MBDPAY_APP_KEY);
-        
+  
 echo $client->alipay('http://192.168.31.2/mbdpay-php/callback_url.php', 1, '产品说明', );
+```
+
+### 退款
+```php
+// 完整的例子：example/refund.php
+
+$res = $client->refund('xxxxxxxxxxxxxxxxxxx');
+```
+
+### 订单查询
+```php
+// 完整的例子：example/order.php
+
+$res = $client->order('xxxxxxxxxxxxxxxxxxx');
 ```
